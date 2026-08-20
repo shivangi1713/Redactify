@@ -1,0 +1,27 @@
+{
+  "name": "in-browser-pii-masker-redactor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chrome MV3 extension that redacts PII and secrets locally before form submission.",
+  "type": "module",
+  "scripts": {
+    "prepare:model": "node scripts/download-model.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test",
+    "audit:network": "node scripts/audit-network.mjs",
+    "clean": "node -e \"import('node:fs/promises').then(fs=>fs.rm('dist',{recursive:true,force:true}))\""
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^4.2.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  },
+  "overrides": {
+    "adm-zip": "0.6.0",
+    "sharp": "0.35.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

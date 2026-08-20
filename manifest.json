@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "In-Browser PII Masker & Redactor",
+  "short_name": "PII Masker",
+  "version": "1.0.0",
+  "description": "Redacts PII and secret credentials locally in input fields before submission.",
+  "minimum_chrome_version": "109",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "PII Masker",
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content/content-script.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; worker-src 'self'; connect-src 'self';"
+  }
+}

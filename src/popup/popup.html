@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PII Masker</title>
+    <link rel="stylesheet" href="./popup.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="header">
+        <div>
+          <h1>PII Masker</h1>
+          <p id="domain-label">Local redaction controls</p>
+        </div>
+        <label class="switch" title="Enable or disable masking on this browser">
+          <input id="enabled" type="checkbox">
+          <span></span>
+        </label>
+      </header>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>Detection</h2>
+          <span id="model-status">Local NER</span>
+        </div>
+        <div id="entity-toggles" class="toggle-grid"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h2>Domain Allowlist</h2>
+          <button id="allow-current" type="button">Allow Site</button>
+        </div>
+        <div class="domain-entry">
+          <input id="domain-input" type="text" placeholder="example.com" autocomplete="off">
+          <button id="add-domain" type="button">Add</button>
+        </div>
+        <ul id="domain-list" class="domain-list"></ul>
+      </section>
+
+      <footer class="footer">
+        <button id="reset" type="button">Reset Defaults</button>
+        <span id="save-status" role="status"></span>
+      </footer>
+    </main>
+    <script type="module" src="./popup.js"></script>
+  </body>
+</html>

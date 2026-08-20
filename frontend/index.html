@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Redactify is a local-first Chrome extension that masks sensitive data before it leaves your browser.">
+    <title>Redactify | Local-first PII masking</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#home" aria-label="Redactify home">
+          <span class="brand-mark" aria-hidden="true">R</span>
+          <span>Redactify</span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-menu" id="nav-menu">
+          <a href="#home">Home</a>
+          <a href="#features">Features</a>
+          <a href="#security">Security</a>
+          <a href="#demo">Demo</a>
+          <a href="#examples">Examples</a>
+        </div>
+
+        <a class="btn btn-primary nav-cta" href="./downloads/redactify-dist.zip" download="redactify-dist.zip">Download Redactify</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">Local-first Chrome extension</p>
+          <h1>Mask sensitive data before it leaves your browser</h1>
+          <p class="hero-subtitle">Redactify detects emails, credit cards, API keys, and personal details locally inside text fields, chat apps, and forms.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="./downloads/redactify-dist.zip" download="redactify-dist.zip">Download Extension</a>
+            <a class="btn btn-secondary" href="#demo">See How It Works</a>
+          </div>
+          <div class="trust-row" aria-label="Product highlights">
+            <span>No cloud processing</span>
+            <span>Manifest V3</span>
+            <span>Local ONNX/WASM</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Redactify product screenshot showing original and masked text in ChatGPT">
+          <figure class="product-screenshot-card">
+            <img src="./assets/redactify-chatgpt-demo.png" alt="Redactify masking sensitive sample text inside ChatGPT, with original and masked states visible.">
+          </figure>
+        </div>
+      </section>
+
+      <section class="section preview-section" id="demo">
+        <div class="section-heading">
+          <p class="eyebrow">Product preview</p>
+          <h2>See sensitive text become safe redactions</h2>
+          <p>Use the toggle to preview how Redactify transforms structured secrets before a message or form is submitted.</p>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-header">
+            <div>
+              <strong>Redaction demo</strong>
+              <span>Browser-window placeholder</span>
+            </div>
+            <div class="segmented" role="group" aria-label="Demo text state">
+              <button class="active" type="button" data-demo-state="original">Original</button>
+              <button type="button" data-demo-state="masked">Masked</button>
+            </div>
+          </div>
+          <div class="browser-mockup demo-window">
+            <div class="browser-top">
+              <span></span>
+              <span></span>
+              <span></span>
+              <div class="address-bar">compose.safe</div>
+            </div>
+            <pre id="demo-output" aria-live="polite">john@doe.com
+sk-proj-abc123...</pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="section feature-list" id="features">
+        <article class="feature-block">
+          <div class="feature-copy">
+            <span class="feature-kicker">Privacy boundary</span>
+            <h>Runs 100% locally</h>
+            <h2>Download The Redactify Chrome Extension</h2>
+            <p>No external API calls. No cloud processing. Your text stays on your device.</p>
+          </div>
+          <div class="placeholder-panel screenshot-panel">
+            <figure class="feature-screenshot-card download-screenshot-card">
+              <img src="./assets/redactify-download-button.png" alt="Redactify download button in the Chrome browser.">
+            </figure>
+          </div>
+        </article>
+
+        <article class="feature-block reverse">
+          <div class="feature-copy">
+            <span class="feature-kicker">Detection stack</span>
+            <h2>Hybrid detection engine</h2>
+            <p>Fast regex rules catch structured PII and secret keys, while local NER detects names, organizations, and locations.</p>
+          </div>
+          <div class="placeholder-panel">
+            <div class="pipeline-card">
+              <span>Regex rules</span>
+              <span>Checksum validation</span>
+              <span>Local NER</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="feature-block">
+          <div class="feature-copy">
+            <span class="feature-kicker">Everyday workflows</span>
+            <h2>Works where you type</h2>
+            <p>Designed for textareas, forms, ChatGPT, Claude, Gmail, WhatsApp Web, and rich text editors.</p>
+          </div>
+          <div class="placeholder-panel screenshot-panel">
+            <figure class="feature-screenshot-card">
+              <img src="./assets/redactify-gmail-demo.png" alt="Redactify masking sensitive sample text in a Gmail compose window.">
+            </figure>
+          </div>
+        </article>
+
+        <article class="feature-block reverse">
+          <div class="feature-copy">
+            <span class="feature-kicker">User controls</span>
+            <h2>Stay in control</h2>
+            <p>Toggle entity types, allowlist trusted domains, and switch between masked and original text when needed.</p>
+          </div>
+          <div class="placeholder-panel screenshot-panel">
+            <figure class="feature-screenshot-card popup-screenshot-card">
+              <img src="./assets/redactify-popup-controls.png" alt="Redactify extension popup showing entity toggles and domain allowlist controls.">
+            </figure>
+          </div>
+        </article>
+      </section>
+
+      <section class="section security-section" id="security">
+        <div class="security-panel">
+          <div class="security-copy">
+            <p class="eyebrow">Security architecture</p>
+            <h2>Built around a strict local processing boundary</h2>
+            <p>Redactify separates fast deterministic checks from heavier local inference, keeping page data inside the browser and away from remote model downloads.</p>
+            <ul>
+              <li>Manifest V3 extension architecture</li>
+              <li>Offscreen worker for local inference</li>
+              <li>Local ONNX/WASM model assets</li>
+              <li>No remote model downloads</li>
+            </ul>
+          </div>
+          <div class="flow" aria-label="Redactify processing flow">
+            <span>Input Field</span>
+            <span>Regex Layer</span>
+            <span>Local NER Worker</span>
+            <span>Masked Text</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section examples-section" id="examples">
+        <div class="section-heading">
+          <p class="eyebrow">Practical examples</p>
+          <h2>Where Redactify helps in real work</h2>
+          <p>These are everyday moments where sensitive data can accidentally slip into a prompt, draft, ticket, or shared log.</p>
+        </div>
+
+        <div class="examples-grid">
+          <article class="example-card">
+            <span class="example-number">01</span>
+            <h3>Pasting into ChatGPT, Claude, or Gemini</h3>
+            <p>You paste a prompt that includes an email, API key, customer name, or internal note. Redactify masks sensitive parts before the message is sent.</p>
+          </article>
+
+          <article class="example-card">
+            <span class="example-number">02</span>
+            <h3>Writing emails in Gmail or Outlook Web</h3>
+            <p>If you accidentally include a credit card number, access key, or private ID in an email draft, Redactify can replace it with <code>[REDACTED_*]</code>.</p>
+          </article>
+
+          <article class="example-card">
+            <span class="example-number">03</span>
+            <h3>Filling customer support forms</h3>
+            <p>Support agents often copy logs or user details into web tools. Redactify can mask emails, phone numbers, tokens, and IDs.</p>
+          </article>
+
+          <article class="example-card">
+            <span class="example-number">04</span>
+            <h3>Sharing error logs with AI tools</h3>
+            <p>Logs may contain JWTs, API keys, AWS keys, or GitHub tokens. Redactify helps sanitize them before pasting.</p>
+          </article>
+
+          <article class="example-card wide">
+            <span class="example-number">05</span>
+            <h3>Working with production credentials</h3>
+            <p>Developers sometimes paste <code>.env</code> values or deployment notes into tickets, chats, or docs. Redactify can catch secrets like <code>sk-...</code>, <code>ghp_...</code>, and <code>AKIA...</code>.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-main">
+        <div>
+          <a class="brand footer-brand" href="#home">
+            <span class="brand-mark" aria-hidden="true">R</span>
+            <span>Redactify</span>
+          </a>
+          <p>Local-first PII masking for safer browsing.</p>
+        </div>
+        <form class="newsletter" aria-label="Newsletter signup">
+          <label for="newsletter-email">Product updates</label>
+          <div>
+            <input id="newsletter-email" type="email" placeholder="you@example.com">
+            <button type="submit">Notify me</button>
+          </div>
+        </form>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Redactify</span>
+        <div>
+          <a href="#">Privacy</a>
+          <a href="#security">Security</a>
+          <a href="#">GitHub</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
